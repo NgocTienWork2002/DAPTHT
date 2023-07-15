@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../public/css/user.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+        <script src="../public/java/user.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <header class="top-bar">
+            <div class="container">
+                <div class="top-bar-container">
+                    <div class="top-bar-contract">
+                        <div class="top-contract-block">
+                            <i class="fa-solid fa-phone-flip"></i>
+                            <div class="contract-text">(+123) 456 7890</div>
+                        </div>
+                        <div class="top-contract-block">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="contract-text">addyour@emailhere</div>
+                        </div>
+                    </div>
+                    <div class="top-bar-icon">
+                        <div class="top-social-icon">
+                            <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                        <div class="top-social-icon">
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                        <div class="top-social-icon">
+                            <a href=""><i class="fa-brands fa-pinterest-p"></i></a>
+                        </div>
+                        <div class="top-social-icon">
+                            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="navbar">
+            <div class="container">
+                <div class="nav-bar-container">
+                    <div class="nav-bar-logo">
+                        <img src="../public/images/logo.png" alt="logo" style="width: 100%; max-height: 43px" />
+                    </div>
+                    <div class="nav-bar-menu">
+                        <ul class="menu-ul">
+                            <li class="menu-link"><a href="index.html">Trang Chủ</a></li>
+                            <li class="menu-link"><a href="About.html">Về Chúng Tôi</a></li>
+                            <li class="menu-link"><a href="Booking.html">Đặt Lịch</a></li>
+                            <li class="menu-link"><a href="Blog.html">Tạp Chí</a></li>
+                            <li class="menu-link"><a href="Contract.html">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-bar-navigation">
+                        <div class="navigation-icon">
+                            <a href="" class="navigation-icon-a"><i class="fa-solid fa-user"></i></a>
+                        </div>
+                        <div class="navigation-icon">
+                            <a href="" class="navigation-icon-a"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main>
+            <!-- Modal change password -->
+            <div id="myModal" class="modal">
+                <div class="modal__layout">
+                    <div class="modal-title">
+                        <h3>Change Password</h3>
+                    </div>
+                    <div class="modal__content">
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>Username</label></div>
+                            <span class="grid__form-labellock" id="tenUser"></span>
+                        </div>
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>Password</label></div>
+                            <input class="grid__form-input modal-input" type="password" placeholder="Password" id="afterPass" onchange="onchangeAfterPass()" />
+                        </div>
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>New Password</label></div>
+                            <input class="grid__form-input modal-input" type="password" placeholder="New Password" id="newPass" onchange="onchangeNewPass()" />
+                        </div>
+                        <div class="modal-content-checkbox"><input type="checkbox" class="input-checkbox" id="checkboxid" /><span>Show Password</span></div>
+                    </div>
+                    <div class="modal-control">
+                        <button class="btn-modal" id="btnCancel">Cancel</button>
+                        <button class="btn-modal btn-ok-modal" id="btnOk">Change</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal detail bills -->
+            <div id="myModal-bill" class="modal">
+                <div class="modal__layout modal__layout-bill">
+                    <div class="modal__bill-title">
+                        <h3>Order: <span id="maHoaDon"></span></h3>
+                        <i id="btnExit" class="fas fa-times"></i>
+                    </div>
+                    <div class="modal__bill-content">
+                        <table class="table-bill" id="table">
+                            <thead class="modal__bill-thead">
+                                <tr class="modal__bill-tr">
+                                    <th class="modal__bill-th">Product Name</th>
+                                    <th class="modal__bill-th">Image</th>
+                                    <th class="modal__bill-th">Quantity</th>
+                                    <th class="modal__bill-th">Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="modal__bill-tbody" id="listDetailBill"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal__bill-footer">
+                        <div style="color: gray">Date: <span id="date-create"></span></div>
+                        <div>Total bills : $<span id="total-bill-detail"></span></div>
+                    </div>
+                </div>
+            </div>
+            <section class="section">
+                <div class="grid__content-left">
+                    <div class="grid__left-img">
+                        <img alt="Hinh nen" class="image__user" id="avatarKH" />
+                    </div>
+                    <h3 class="user__name" id="fullName">Wonder Women</h3>
+                    <div class="grid__left-menu">
+                        <button class="tablinks" onclick="openTab(event, 'account')" id="defaultOpen"><i class="fas fa-user icon-menu"></i>My Account</button>
+                        <button class="tablinks" onclick="openTab(event, 'tour')"><i class="fas fa-globe-americas icon-menu"></i>My Tour</button>
+                        <button class="tablinks" onclick="openTab(event, 'bill')"><i class="fas fa-wallet icon-menu"></i>My Bill</button>
+                    </div>
+                </div>
+                <!-- View Account -->
+                <div class="grid__content-right" id="account">
+                    <div class="grid__header">
+                        <h2>My Profile</h2>
+                        <span class="grid__header-note">Manage profile information</span>
+                    </div>
+                    <div class="grid__middle">
+                        <div class="grid__middle-left">
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Username</label></div>
+                                <span class="grid__form-labellock" id="tenTK"></span>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Password</label></div>
+                                <span class="grid__form-labellock">**********</span>
+                                <span class="grid__form-labelchange" onclick="loadModal()">Change</span>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Full Name</label></div>
+                                <input class="grid__form-input" type="text" id="hoTen" placeholder="Full Name" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Identity card</label></div>
+                                <span class="grid__form-labellock" id="CMNDKH"></span>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Number Phone</label></div>
+                                <input class="grid__form-input" type="text" id="soDT" placeholder="Phone" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Address</label></div>
+                                <input class="grid__form-input" type="text" id="diaChi" placeholder="Address" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Gender</label></div>
+                                <div class="grid__form-radio">
+                                    <input id="male-radio" class="form__radio" type="radio" name="gender" value="True" />
+                                    <label for="male-radio">Male</label>
+                                    <input id="female-radio" class="form__radio" type="radio" name="gender" value="False" />
+                                    <label for="female-radio">Female</label>
+                                </div>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Birthday</label></div>
+                                <input class="grid__form-input" type="date" id="ngaySinh" />
+                            </div>
+                            <div class="grid__form" style="float: right">
+                                <button class="grid__form-btnsave" id="btn-saveUser" onclick="updateInfoUser()">Save</button>
+                            </div>
+                        </div>
+                        <div class="grid__middle-right">
+                            <form action="/user/uploadImage" method="post" enctype="multipart/form-data">
+                                <h3>Image</h3>
+                                <div class="grid__middle-right-img">
+                                    <i class="fas fa-user icon-image"></i>
+                                </div>
+                                <input type="file" id="choosefile" style="display: none" name="imageUser" />
+                                <input type="hidden" name="idUser" id="idUser" />
+                                <span class="grid__middle-right-fileName" id="fileName">File Name</span>
+                                <label for="choosefile" class="btn-choose-image">Click to select file</label>
+                                <button type="submit" class="btn-upload-image">Update Avatar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- View Tour -->
+                <div class="grid__content-right" id="tour">
+                    <div class="grid__header">
+                        <h2>My Tours</h2>
+                        <span class="grid__header-note">Manage tours information</span>
+                    </div>
+                    <div class="grid__middle grid__middle-tour">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Tour Name</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Hotel</th>
+                                    <th scope="col">Flight</th>
+                                    <th scope="col">Date Start</th>
+                                    <th scope="col">Date End</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listSP"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- View Bill -->
+                <div class="grid__content-right" id="bill">
+                    <div class="grid__header">
+                        <h2>My Bills</h2>
+                        <span class="grid__header-note">Manage bills information</span>
+                    </div>
+                    <div class="grid__middle">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id Bill</th>
+                                    <th scope="col">Order creation date</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="listBills"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-layout">
+                <div class="logo-footer">
+                    <h1>NTK</h1>
+                </div>
+                <div class="parner-footer">
+                    <img src="/images/64351213_432249467557263_1781019678047469568_n.png" alt="" />
+                    <img src="/images/245938500_294208808957323_6205616613244952927_n.jpg" alt="" /><br />
+                    <img src="/images/128932790_684344869114346_842040636996147836_n.jpg" alt="" />
+                    <img src="/images/243348197_264973648755003_7495347835914595231_n.jpg" alt="" />
+                </div>
+                <div class="contract-footer">
+                    <h3>Contract</h3>
+                    <label>+849771230</label>
+                    <label>nguyentienkien@gmail.com</label>
+                    <label>New York City</label>
+                </div>
+                <div class="info-footer">
+                    <h3>Math with website</h3>
+                    <label>Nguyễn Ngọc Tiến</label>
+                    <label>Nguyễn Khôi Nguyên</label>
+                    <label>Đỗ Ngọc Trung Kiên</label>
+                </div>
+            </div>
+            <div class="btncontrol-footer">
+                <div class="layout-control">
+                    <div class="copyright-footer">© Adventure Tours, 2021. Made with love and care by ThemeDelight</div>
+                    <a href="#header-top" class="btn-arrow"><i class="fa fa-angle-up"></i></a>
+                    <div class="menu-footer">
+                        <label for="">Terms & Conditions</label>
+                        <label for="">Cookies</label>
+                        <label for="">Privacy Policy</label>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

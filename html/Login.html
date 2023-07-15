@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+        <link rel="stylesheet" href="/css/Font.css" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="../public/css/Login.css" />
+        <script src="../public/java/login.js"></script>
+        <title>Login</title>
+    </head>
+    <body>
+        <a href="/index"><h1>NTK</h1></a>
+        <div id="control">
+            <button class="tablink" onclick="openPage('Home')">Login</button>
+            <button class="tablink" onclick="openPage('News')">Sign up</button>
+        </div>
+        <div id="Home" class="tabcontent">
+            <div id="login">
+                <div class="imgcontainer">
+                    <img src="../public/images/face-1.jpg" alt="Avatar" class="avatar" />
+                </div>
+                <div class="container">
+                    <label for="uname"><b>Tài Khoản</b></label>
+                    <input type="text" placeholder="Tên Tài Khoản" class="User" required />
+
+                    <label for="psw"><b>Mật Khẩu</b></label>
+                    <input type="password" placeholder="Mật Khẩu" class="Password" required />
+
+                    <label for="psw"><b>Vai Trò</b></label>
+                    <Select id="Role">
+                        <option value="Cus">Khách Hàng</option>
+                        <option value="Ad">Người Quản Trị</option>
+                    </Select>
+                    <button onclick="login()" type="submit">Đăng Nhập</button>
+                    <label> <input type="checkbox" checked="checked" name="remember" /> Nhớ tài khoản </label>
+                </div>
+            </div>
+        </div>
+        <div id="News" class="tabcontent">
+            <div id="login">
+                <div class="container">
+                    <h1>Đăng Kí</h1>
+                    <p>Điền đầy đủ thông tin.</p>
+                    <hr />
+
+                    <label for="email"><b>Tên Tài Khoản : </b></label>
+                    <input type="text" placeholder="Enter Email" id="User" required />
+
+                    <label for="psw"><b>Mật Khẩu</b></label>
+                    <input type="password" placeholder="Enter Password" id="Password" required />
+
+                    <label for="psw"><b>Role</b></label>
+                    <input type="text" placeholder="Enter Password" id="Password" required />
+
+                    <p>By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.</p>
+                    <div class="clearfix">
+                        <button type="button" onclick="btnCancel()" class="cancelbtn">Hủy</button>
+                        <button type="submit" onclick="SigUp()" class="signupbtn">Đăng Kí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

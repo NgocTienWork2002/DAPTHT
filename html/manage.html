@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tourism Management</title>
+    <link rel="stylesheet" href="../public/css/Manage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../public/java/manage.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>PA <span>W</span></h3>
+      </div>
+      <div class="right_area">
+        <a href="index.html" class="logout_btn"><i class="fas fa-power-off"></i></a>
+      </div>
+    </header>
+    <div class="sidebar">
+      <center id="img">
+        <h4 id="h4"></h4>
+      </center>
+      <a href="#"><i class="fas fa-globe-europe"></i><span>Quản lý Lịch</span></a>
+      <a href="#"><i class="fas fa-user-circle"></i><span>Quản Lý Khách Hàng</span></a>
+      <a href="#"><i class="fas fa-table"></i><span>Thống Kê</span></a>
+      <a href="#"><i class="fas fa-user-alt"></i><span>Thông Tin Nhân Viên</span></a>
+      <a href="#"><i class="fas fa-comment"></i><span>Phòng Chat</span></a>
+    </div>
+    <div class="content">
+      <h1 class="h1">Tourism Management</h1>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" style="color: black;"></th>
+                <th scope="col" style="color: black;">Tên Khách Hàng</th>
+                <th scope="col" style="color: black">Số điện thoại</th>
+                <th scope="col" style="color: black;">Ngày Đặt</th>
+                <th scope="col" style="color: black;">Thời Gian</th>
+                <th scope="col" style="color: black;">Dịch Vụ</th>
+                <th scope="col" style="color: black;">Bác Sĩ</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+                <td>
+                  <i class="far fa-trash-alt" onclick="load()"></i>
+                </td>
+                <td style="color: black;">Khôi Nguyên</td>
+                <td  style="color: black;">0926698303</td>
+                <td  style="color: black;">29/10/2023</td>
+                <td  style="color: black;">9:00 AM</td>
+                <td style="color: black;">Lưu Chuồng</td>
+                <td style="color: black;">Trí Khang</td>
+              </tr>
+        </tbody>
+     </table>  
+ </div>
+  </body>
+</html>
+      
