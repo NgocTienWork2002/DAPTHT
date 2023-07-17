@@ -196,85 +196,7 @@ ul {
     color: var(--blackColor);
     line-height: 28px;
 }
-.booking {
-    margin-bottom: 90px;
-}
-.booking-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.booking-form,
-.booking-content {
-    flex: 1;
-}
-.booking-form {
-    background-color: orange;
-    border-radius: 30px;
-    position: relative;
-    padding: 30px;
-    margin-right: 30px;
-}
-.booking-form-li {
-    margin-bottom: 20px;
-}
-.booking-form-li input {
-    width: 90%;
-    border-radius: 30px;
-    border: gray solid 1px;
-    padding: 15px 20px;
-    outline: none;
-}
-.booking-form-li select {
-    width: 98%;
-    padding: 10px 10px;
-    border-radius: 30px;
-    outline: none;
-    border: gray solid 1px;
-}
-.btn-booking {
-    background-color: black;
-    color: white;
-    width: 100%;
-    padding: 15px 0;
-    border-radius: 30px;
-    cursor: pointer;
-    outline: none;
-}
-.booking-content {
-    padding: 30px;
-}
-.booking-content h3 {
-    color: yellow;
-    font-size: 26px;
-    margin-bottom: 30px;
-}
-.booking-content h2 {
-    color: orange;
-    font-size: 40px;
-    margin-bottom: 30px;
-}
-.booking-content-desc {
-    margin-top: 30px;
-    display: flex;
-}
-.booking-content-block {
-    flex: 1;
-}
-.content-sub-block {
-    flex: 1;
-    color: black;
-    margin-bottom: 30px;
-}
-.content-sub-block div {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-}
-.content-sub-block div i {
-    margin-right: 15px;
-    color: orangered;
-}
+
 /* Banner 2 */
 
 .banner2-wrapper {
@@ -305,7 +227,7 @@ ul {
 .top-content h5 {
     font-size: 40px;
     font-weight: 500;
-    font-family: "Times new roman" , sans-serif;
+    font-family: "Engagement", cursive;
     color: #fff;
     margin-bottom: 30px;
 }
