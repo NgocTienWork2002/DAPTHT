@@ -1,69 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-        <link rel="stylesheet" href="/css/Font.css" />
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link rel="stylesheet" href="../public/css/Login.css" />
-        <script src="../public/java/login.js"></script>
-        <title>Login</title>
-    </head>
-    <body>
-        <a href="/index"><h1>NTK</h1></a>
-        <div id="control">
-            <button class="tablink" onclick="openPage('Home')">Login</button>
-            <button class="tablink" onclick="openPage('News')">Sign up</button>
-        </div>
-        <div id="Home" class="tabcontent">
-            <div id="login">
-                <div class="imgcontainer">
-                    <img src="../public/images/face-1.jpg" alt="Avatar" class="avatar" />
-                </div>
-                <div class="container">
-                    <label for="uname"><b>Tài Khoản</b></label>
-                    <input type="text" placeholder="Tên Tài Khoản" class="User" required />
-
-                    <label for="psw"><b>Mật Khẩu</b></label>
-                    <input type="password" placeholder="Mật Khẩu" class="Password" required />
-
-                    <label for="psw"><b>Vai Trò</b></label>
-                    <Select id="Role">
-                        <option value="Cus">Khách Hàng</option>
-                        <option value="Ad">Người Quản Trị</option>
-                    </Select>
-                    <button onclick="login()" type="submit">Đăng Nhập</button>
-                    <label> <input type="checkbox" checked="checked" name="remember" /> Nhớ tài khoản </label>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../public/java/login.js"></script>
+    <title>Login</title>
+    <style>
+      .background {
+        background: var(
+          --blue,
+          linear-gradient(180deg, #0575e6 0%, #02298a 84.79%, #021b79 100%)
+        );
+      }
+      .text {
+        color: white;
+        text-align: left;
+      }
+      .fame {
+        border-radius: 557px;
+        border: 1px solid #0575e6;
+        position: absolute;
+      }
+      .textCotent {
+        color: #333;
+        line-height: normal;
+        font-style: normal;
+      }
+      .input {
+        border-radius: 30px;
+        border: 1px solid #eee;
+        background: #fff;
+        padding: 10px 20px;
+        padding-left: 50px;
+        outline: none;
+        width: 307px;
+      }
+      .button {
+        border-radius: 30px;
+        background: #0575e6;
+      }
+    </style>
+  </head>
+  <body class="flex-1">
+    <div class="flex flex-row flex-1">
+      <div
+        class="w-[860px] h-[707px] shrink background relative overflow-hidden"
+      >
+        <div
+          class="flex flex-1 h-full items-start items-center justify-center flex-col"
+        >
+          <div class="inline-flex flex-col gap-[23px] items-start">
+            <div class="w-[410px] h-[87px]">
+              <p class="text text-[40px] not-italic leading-normal font-bold">
+                PAW FOR PET
+              </p>
+              <p class="text text-[18] not-italic leading-normal font-[500]">
+                best pet care center in the world
+              </p>
             </div>
+            <a
+              class="text flex py-[8px] px-[30px] bg-[#0575E6] rounded-[30px] items-center justify-center"
+              >Read More</a
+            >
+          </div>
         </div>
-        <div id="News" class="tabcontent">
-            <div id="login">
-                <div class="container">
-                    <h1>Đăng Kí</h1>
-                    <p>Điền đầy đủ thông tin.</p>
-                    <hr />
-
-                    <label for="email"><b>Tên Tài Khoản : </b></label>
-                    <input type="text" placeholder="Enter Email" id="User" required />
-
-                    <label for="psw"><b>Mật Khẩu</b></label>
-                    <input type="password" placeholder="Enter Password" id="Password" required />
-
-                    <label for="psw"><b>Role</b></label>
-                    <input type="text" placeholder="Enter Password" id="Password" required />
-
-                    <p>By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.</p>
-                    <div class="clearfix">
-                        <button type="button" onclick="btnCancel()" class="cancelbtn">Hủy</button>
-                        <button type="submit" onclick="SigUp()" class="signupbtn">Đăng Kí</button>
-                    </div>
-                </div>
+        <div class="w-[638px] h-[583px]">
+          <div
+            class="w-[557px] h-[557px] shrink rounded-[557px] fame top-[450px] right-[500px]"
+          ></div>
+          <div
+            class="w-[557px] h-[557px] shrink rounded-[557px] fame top-[500px] right-[400px]"
+          ></div>
+        </div>
+      </div>
+      <div class="flex-1 items-center justify-center flex flex-col">
+        <div id="Login" class="w-[307px] h-[356px] tabLogin">
+          <div class="shrink bg-[white] mb-[20px]">
+            <p class="textCotent text-[26px] font-bold">Hello Angain !</p>
+            <p class="textCotent text-[18px] font-normal">Welcome Back</p>
+          </div>
+          <div class="flex flex-col gap-[10px] items-start mb-[16px]">
+            <div class="flex w-[307px] items-center relative">
+              <div
+                class="flex justify-center items-center absolute left-[15px]"
+              >
+                <img src="../public//images/bx_bxs-user.png" />
+              </div>
+              <input
+                type="text"
+                class="input username"
+                placeholder="UserName ....."
+              />
             </div>
+            <div class="flex w-[307px] items-center relative">
+              <div
+                class="flex justify-center items-center absolute left-[15px]"
+              >
+                <img src="../public//images/bx_bxs-lock-alt.jpg" />
+              </div>
+              <input
+                type="password"
+                class="input username"
+                placeholder="Enter Password...."
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-[10px] justify-center items-center">
+            <div class="w-[307px]">
+              <button
+                class="py-[18px] w-[307px] px-[26px] button text-white font-normal text-sm mb-[5px]"
+              >
+                Login
+              </button>
+              <div class="flex justify-center">
+                <p class="text-sm font-normal">
+                  Don’t have an account?
+                  <span
+                    onclick="Tab(event,'signUp')"
+                    class="text-[blue] cursor-pointer"
+                    >Sign up</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </body>
+        <div id="signUp" class="w-[307px] h-[356px] tabLogin hidden">
+          <div class="shrink bg-[white] mb-[20px]">
+            <p class="textCotent text-[26px] font-bold">Hello!</p>
+            <p class="textCotent text-[18px] font-normal">
+              Sign up to Get started
+            </p>
+          </div>
+          <div class="flex flex-col gap-[10px] items-start mb-[16px]">
+            <div class="flex w-[307px] items-center relative">
+              <div
+                class="flex justify-center items-center absolute left-[15px]"
+              >
+                <img src="../public/images/bx_bxs-user.png" />
+              </div>
+              <input
+                type="text"
+                class="input username"
+                placeholder="Enter username"
+              />
+            </div>
+            <div class="flex w-[307px] items-center relative">
+              <div
+                class="flex justify-center items-center absolute left-[15px]"
+              >
+                <img src="../public/images/bx_bxs-lock-alt.jpg" />
+              </div>
+              <input
+                type="text"
+                class="input username"
+                placeholder="Enter password"
+              />
+            </div>
+            <div class="flex w-[307px] items-center relative">
+              <div
+                class="flex justify-center items-center absolute left-[15px]"
+              >
+                <img src="../public/images/bx_bxs-lock-alt.jpg" />
+              </div>
+              <input
+                type="password"
+                class="input username"
+                placeholder="Repeat password "
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-[10px] justify-center items-center">
+            <div class="w-[307px]">
+              <button
+                class="py-[18px] w-[307px] px-[26px] button text-white font-normal text-sm mb-[5px]"
+              >
+                Sign Up
+              </button>
+              <div class="flex justify-center">
+                <p class="text-sm font-normal">
+                  Already have an account?
+                  <span
+                    onclick="Tab(event, 'Login')"
+                    class="text-[blue] cursor-pointer"
+                    >Login</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
