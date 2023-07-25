@@ -1,11 +1,3 @@
-function btnCancel() {
-  openPage("Home");
-}
-// Đăng ký ................
-
-$(document).ready(() => {
-  document.getElementById("Home").style.display = "block";
-});
 function Tab(evt, cityName) {
   var i, tabcontent;
   tabcontent = document.getElementsByClassName("tabLogin");
