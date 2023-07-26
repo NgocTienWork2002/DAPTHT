@@ -3,6 +3,6 @@ const router = express.Router();
 
 var aboutController = require("../controller/aboutController");
 
-router.get("/", aboutController.getAbout);
+router.get("/", aboutController.getAboutPage);
 
 module.exports = router;

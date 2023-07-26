@@ -1,15 +1,7 @@
-const express = require("express");
-var app = express();
-const { resolve } = require("path");
-const { rejects } = require("assert");
-var sql = require("../models/database");
-const { GetData } = require("../models/database");
-app.use(express.urlencoded({ extended: true }));
+const { executeQuery } = require("../models/database");
 
-async function getAbout(req, res) {
-    res.render("about");
-}
-
-module.exports = {
-    getAbout: getAbout,
+const getAboutPage = (req, res) => {
+    res.render("pages/about");
 };
+
+module.exports = { getAboutPage };

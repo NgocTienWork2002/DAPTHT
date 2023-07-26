@@ -6,7 +6,7 @@ var express = require("express");
 var app = express();
 app.use(express.json());
 
-function GetData(strsql) {
+function executeQuery(strsql) {
     return new Promise(function (resolve, reject) {
         sql.connect(config, function (err, db) {
             if (err) console.log(err);
@@ -18,6 +18,4 @@ function GetData(strsql) {
         });
     });
 }
-module.exports = {
-    GetData: GetData,
-};
+module.exports = { executeQuery };

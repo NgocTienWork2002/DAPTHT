@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="/js/login.js"></script>
+        <title>Login</title>
+        <style>
+            .background {
+                background: var(--blue, linear-gradient(180deg, #0575e6 0%, #02298a 84.79%, #021b79 100%));
+            }
+            .text {
+                color: white;
+                text-align: left;
+            }
+            .fame {
+                border-radius: 557px;
+                border: 1px solid #0575e6;
+                position: absolute;
+            }
+            .textCotent {
+                color: #333;
+                line-height: normal;
+                font-style: normal;
+            }
+            .input {
+                border-radius: 30px;
+                border: 1px solid #eee;
+                background: #fff;
+                padding: 10px 20px;
+                padding-left: 50px;
+                outline: none;
+                width: 307px;
+            }
+            .button {
+                border-radius: 30px;
+                background: #0575e6;
+            }
+        </style>
+    </head>
+    <body class="flex-1">
+        <div class="flex flex-row flex-1">
+            <div class="w-[860px] h-[707px] shrink background relative overflow-hidden">
+                <div class="flex flex-1 h-full items-start items-center justify-center flex-col">
+                    <div class="inline-flex flex-col gap-[23px] items-start">
+                        <div class="w-[410px] h-[87px]">
+                            <p class="text text-[40px] not-italic leading-normal font-bold">PAW FOR PET</p>
+                            <p class="text text-[18px] not-italic leading-normal font-[500]">best pet care center in the world</p>
+                        </div>
+                        <a class="text flex py-[8px] px-[30px] bg-[#0575E6] rounded-[30px] items-center justify-center">Read More</a>
+                    </div>
+                </div>
+                <div class="w-[638px] h-[583px]">
+                    <div class="w-[557px] h-[557px] shrink rounded-[557px] fame top-[450px] right-[500px]"></div>
+                    <div class="w-[557px] h-[557px] shrink rounded-[557px] fame top-[500px] right-[400px]"></div>
+                </div>
+            </div>
+            <div class="flex-1 items-center justify-center flex flex-col">
+                <div id="Login" class="w-[307px] h-[356px] tabLogin">
+                    <div class="shrink bg-[white] mb-[20px]">
+                        <p class="textCotent text-[26px] font-bold">Hello Angain !</p>
+                        <p class="textCotent text-[18px] font-normal">Welcome Back</p>
+                    </div>
+                    <div class="flex flex-col gap-[10px] items-start mb-[16px]">
+                        <div class="flex w-[307px] items-center relative">
+                            <div class="flex justify-center items-center absolute left-[15px]">
+                                <img src="/images/bx_bxs-user.png" />
+                            </div>
+                            <input type="text" class="input username" placeholder="UserName ....." />
+                        </div>
+                        <div class="flex w-[307px] items-center relative">
+                            <div class="flex justify-center items-center absolute left-[15px]">
+                                <img src="/images/bx_bxs-lock-alt.jpg" />
+                            </div>
+                            <input type="password" class="input username" placeholder="Enter Password...." />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-[10px] justify-center items-center">
+                        <div class="w-[307px]">
+                            <button class="py-[18px] w-[307px] px-[26px] button text-white font-normal text-sm mb-[5px]">Login</button>
+                            <div class="flex justify-center">
+                                <p class="text-sm font-normal">
+                                    Don’t have an account?
+                                    <span onclick="Tab(event,'signUp')" class="text-[blue] cursor-pointer">Sign up</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="signUp" class="w-[307px] h-[356px] tabLogin hidden">
+                    <div class="shrink bg-[white] mb-[20px]">
+                        <p class="textCotent text-[26px] font-bold">Hello!</p>
+                        <p class="textCotent text-[18px] font-normal">Sign up to Get started</p>
+                    </div>
+                    <div class="flex flex-col gap-[10px] items-start mb-[16px]">
+                        <div class="flex w-[307px] items-center relative">
+                            <div class="flex justify-center items-center absolute left-[15px]">
+                                <img src="/images/bx_bxs-user.png" />
+                            </div>
+                            <input type="text" class="input username" placeholder="Enter username" />
+                        </div>
+                        <div class="flex w-[307px] items-center relative">
+                            <div class="flex justify-center items-center absolute left-[15px]">
+                                <img src="/images/bx_bxs-lock-alt.jpg" />
+                            </div>
+                            <input type="text" class="input username" placeholder="Enter password" />
+                        </div>
+                        <div class="flex w-[307px] items-center relative">
+                            <div class="flex justify-center items-center absolute left-[15px]">
+                                <img src="/images/bx_bxs-lock-alt.jpg" />
+                            </div>
+                            <input type="password" class="input username" placeholder="Repeat password " />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-[10px] justify-center items-center">
+                        <div class="w-[307px]">
+                            <button class="py-[18px] w-[307px] px-[26px] button text-white font-normal text-sm mb-[5px]">Sign Up</button>
+                            <div class="flex justify-center">
+                                <p class="text-sm font-normal">
+                                    Already have an account?
+                                    <span onclick="Tab(event, 'Login')" class="text-[blue] cursor-pointer">Login</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
