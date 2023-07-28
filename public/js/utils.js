@@ -1,4 +1,4 @@
-function handle() {
+function handleScroll() {
     $(window).scroll(function () {
         if ($(window).scrollTop() > 48) {
             $(".header__navbar").css({
@@ -18,5 +18,25 @@ function handle() {
         }
     });
 }
+const handleLogout = () => {
+    localStorage.removeItem("profile");
+    window.location.href = "/login";
+};
 
-handle();
+const handleGetName = () => {
+    const profile = localStorage.getItem("profile");
+    if (profile) {
+        const { userName } = JSON.parse(profile);
+        let html = $(`
+            <span class='user__name-span'>Hello ${userName}!</span>
+            <button class='buttonLogout' onclick="handleLogout()">Logout</button>
+        `);
+        $("#isAuthenticated").append(html);
+    } else {
+        let html = $(`<a href="/login">Login</a>`);
+        $("#isAuthenticated").append(html);
+    }
+};
+
+handleGetName();
+handleScroll();

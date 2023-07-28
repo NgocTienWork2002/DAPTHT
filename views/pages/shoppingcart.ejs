@@ -6,16 +6,10 @@
         <title>Pow for pet care</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet" />
@@ -26,12 +20,6 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-            integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
         <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/shoppingcart.css" />
     </head>
@@ -158,13 +146,7 @@
                         <div class="cart-voucher">
                             Coupon Code:
                             <input type="text" class="coupon-input" placeholder="Promotion code here" id="coupon-code" />
-                            <input
-                                type="hidden"
-                                class="coupon-input"
-                                value="null"
-                                placeholder="Promotion code here"
-                                id="coupon-code-hidden"
-                            />
+                            <input type="hidden" class="coupon-input" value="null" placeholder="Promotion code here" id="coupon-code-hidden" />
                             <button class="btn-check-coupon" id="btn-check-coupon" onclick="checkCoupon()">Check Coupon</button>
                             <span class="popup-coupon" id="popup-coupon">No discount code found</span>
                         </div>
@@ -186,6 +168,6 @@
                 </div>
             </div>
         </main>
-        <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %> <%- include('../partials/utils.ejs') %>
     </body>
 </html>
