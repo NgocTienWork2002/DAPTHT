@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-var contractController = require("../controller/contractController");
+var pageController = require("../controller/pageController");
 
-router.get("/", contractController.getContractPage);
+router.get("/", pageController.getContractPage);
 
 module.exports = router;

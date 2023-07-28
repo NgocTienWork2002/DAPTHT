@@ -1,8 +1,8 @@
 module.exports = {
-    user: "sa12312",
-    password: "123456555",
+    user: "sa",
+    password: "123456",
     server: "MSI\\KHOINGUYEN1207",
-    database: "DOANNUOCHOA",
+    database: "PETDB",
     diver: "msnodesqlv8",
     options: {
         encrypt: false,
