@@ -18,6 +18,7 @@ function handleScroll() {
         }
     });
 }
+
 const handleLogout = () => {
     localStorage.removeItem("profile");
     window.location.href = "/login";

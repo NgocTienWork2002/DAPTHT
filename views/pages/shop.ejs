@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pow for pet care</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/shop.css" />
+        <script src="/js/shop.js"></script>
+    </head>
+    <body>
+        <%- include('../partials/header') %>
+        <main>
+            <div class="container">
+                <div class="content_container">
+                    <div class="asideFilter">
+                        <h1 class="titleAside">Categories</h1>
+                        <ul class="list-category">
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Accessories</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Care</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Clothing</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Decor</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Food</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Others</a>
+                            </li>
+                            <li class="li-category">
+                                <i class="fa-solid fa-paw"></i>
+                                <a href="#">Uncategorized</a>
+                            </li>
+                        </ul>
+                        <h1 class="titleAside">Filter by price range</h1>
+                        <form id="formFilter" onsubmit="handleFilter(event)">
+                            <div class="filter-price">
+                                <input type="text" class="inputFilterPrice" id="price_min" placeholder="FROM" />
+                                <span class="spanbetween">-</span>
+                                <input type="text" class="inputFilterPrice" id="price_max" placeholder="TO" />
+                            </div>
+                            <div class="errorInput" id="errorInput"></div>
+                            <button class="btnSearchFilter" type="submit">Apply</button>
+                        </form>
+                        <div class="line"></div>
+                        <button class="btnSearchFilter" onclick="handleClearFilter()">Clear Filter</button>
+                    </div>
+                    <div class="contentView">
+                        <div class="searchView">
+                            <form onsubmit="handleFilterByName(event)">
+                                <div class="groupSearch">
+                                    <input type="text" placeholder="Enter keyword" id="nameInput" class="input-search" />
+                                    <button>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="productView">
+                            <div class="product-view-container" id="productListView"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../partials/footer.ejs') %> <%- include('../partials/utils.ejs') %>
+    </body>
+</html>
