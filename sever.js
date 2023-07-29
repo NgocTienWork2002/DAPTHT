@@ -16,6 +16,7 @@ const bookingRoute = require("./routes/booking.route");
 const blogRoute = require("./routes/blog.route");
 const contractRoute = require("./routes/contract.route");
 const shoppingcartRoute = require("./routes/shoppingcart.route");
+const shopRoute = require("./routes/shop.route");
 
 app.use("/login", authRoute);
 app.use("/", homeRoute);
@@ -24,6 +25,7 @@ app.use("/booking", bookingRoute);
 app.use("/blog", blogRoute);
 app.use("/contract", contractRoute);
 app.use("/shoppingcart", shoppingcartRoute);
+app.use("/shop", shopRoute);
 
 app.listen(3000, () => {
     console.log("Sever is running");
