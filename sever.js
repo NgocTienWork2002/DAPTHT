@@ -16,8 +16,10 @@ const bookingRoute = require("./routes/booking.route");
 const blogRoute = require("./routes/blog.route");
 const contractRoute = require("./routes/contract.route");
 const shoppingcartRoute = require("./routes/shoppingcart.route");
+const signUpRoute = require("./routes/sign.route")
 
 app.use("/login", authRoute);
+app.use("/sign", signUpRoute)
 app.use("/", homeRoute);
 app.use("/about", aboutRoute);
 app.use("/booking", bookingRoute);
