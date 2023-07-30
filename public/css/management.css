@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ecedf2;
+  font-family: "Roboto", sans-serif;
+}
+/* header */
+
+header {
+  position: fixed;
+  background: #22242a;
+  padding: 20px;
+  width: 100%;
+  z-index: 2;
+}
+
+.left_area h3 {
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.left_area span {
+  color: #19b3d3;
+}
+.right_area span {
+  padding: 5px;
+  margin-top: -30px;
+  margin-right: 40px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  float: right;
+  margin-right: 5%;
+}
+.logout_btn {
+  padding: 5px;
+  background: #19b3d3;
+  text-decoration: none;
+  float: right;
+  margin-top: -30px;
+  margin-right: 40px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+  transition-property: background;
+}
+
+.logout_btn:hover {
+  background: #0b87a6;
+}
+
+.sidebar {
+  background: #2f323a;
+  margin-top: 70px;
+  padding-top: 30px;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  transition: 0.5s;
+  transition-property: left;
+}
+
+.sidebar .profile_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.sidebar h4 {
+  color: #ccc;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar .management_controll {
+  color: #fff;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  line-height: 60px;
+  width: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+}
+.sidebar label #sidebar_btn {
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  cursor: pointer;
+  left: 300px;
+  font-size: 20px;
+  margin: 5px 0;
+  transition: 0.5s;
+  transition-property: color;
+}
+
+label #sidebar_btn:hover {
+  color: #19b3d3;
+}
+
+#check:checked ~ .sidebar {
+  left: -190px;
+}
+
+#check:checked ~ .sidebar a span {
+  display: none;
+}
+
+#check:checked ~ .sidebar a {
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+.content {
+  z-index: 8888;
+  margin-left: 250px;
+  transition: 0.5s;
+  overflow: hidden;
+  padding-top: 100px;
+}
+#check {
+  display: none;
+}
+.background1 {
+  background-image: linear-gradient(to right, #0c84d1 0, #4eb4f5 100%);
+  background-repeat: repeat-x;
+}
+.background2 {
+  background-image: linear-gradient(to right, #ff7216 0, #ffb07c 100%);
+  background-repeat: repeat-x;
+}
+.background3 {
+  background-image: linear-gradient(to right, #20a576 0, #4eddaa 100%);
+  background-repeat: repeat-x;
+}
+.background4 {
+  background-image: linear-gradient(to right, #ff1635 0, #ff7c8d 100%);
+  background-repeat: repeat-x;
+}
+.content-table {
+  width: 100%;
+  border-bottom: 0.5px solid gray;
+}
+.infor {
+  padding: 25px 20px;
+}
+.content-table {
+  border-top: 0.5px solid gray;
+}
+.content-table:last-child {
+  border: none;
+}
+.controll-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px;
+}
+.title-controll {
+  padding: 0 15px;
+}
+.btn-addItem:hover {
+  background-color: tomato;
+  color: white;
+  transition: 0.3s;
+}
+.icon {
+  cursor: pointer;
+  padding: 0 10px;
+}
