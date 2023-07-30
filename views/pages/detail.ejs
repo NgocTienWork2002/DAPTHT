@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pow for pet care</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/detail.css" />
+        <script src="/js/detail.js"></script>
+    </head>
+    <body>
+        <%- include('../partials/header') %>
+        <div id="toast"></div>
+        <main>
+            <div class="banner">
+                <div class="content-banner">
+                    <h1>Shop Product Detail</h1>
+                    <div class="content-navigate">
+                        <a href="/" class="textHome">Home</a>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <a href="/shop/<%= data.maSP %>" class="linkDetail">Shop Product Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="content-container">
+                    <div class="aside-view">
+                        <div class="product-image">
+                            <img src="<%= data.hinhAnh %>" id="productImage" style="width: 100%" alt="Image" />
+                        </div>
+                    </div>
+                    <div class="content-view">
+                        <h1 class="product-title" id="productName"><%= data.tenSP %></h1>
+                        <div class="line"></div>
+                        <p class="product-code">Sku: 290397</p>
+                        <p class="product-description" id="productDescription"><%= data.moTa %></p>
+                        <div>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="product-price" id="productPrice">$<%= data.giaTien %></span>
+                        <span class="textCategory">Quantity:</span>
+                        <input type="number" max="10" min="1" value="1" class="inputQuantity" id="quantityInput" />
+                        <button class="btn" onclick="handleAddToCart(`<%= data.maSP %>`)" id="btnAddToCart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to cart
+                        </button>
+                        <span class="textCategory">Share on:</span>
+                        <div style="display: flex">
+                            <i class="fa-brands fa-facebook icon-detailpage"></i>
+                            <i class="fa-brands fa-twitter icon-detailpage"></i>
+                            <i class="fa-brands fa-linkedin icon-detailpage"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../partials/footer.ejs') %> <%- include('../partials/utils.ejs') %>
+    </body>
+</html>

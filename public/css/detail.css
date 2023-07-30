@@ -1,0 +1,234 @@
+:root {
+    --primaryColor: #e1c340;
+    --blackColor: #232323;
+    --grayColor: #6f6f6f;
+    --aquaColor: #4cd7d0;
+    --backgroundColor: #ffffff;
+}
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cabin", sans-serif;
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+    line-height: 28px;
+    position: relative;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+li {
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+.btn {
+    border-radius: 5px 20px 5px;
+    background: var(--primaryColor);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 30px 15px;
+    line-height: 1;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #f0d86f;
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://paw.websitelayout.net/img/bg/page-title.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 130px 0;
+}
+.content-banner {
+    text-align: center;
+    color: white;
+}
+.content-banner h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 0;
+    font-family: "Nunito", sans-serif;
+}
+.content-navigate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textHome {
+    color: white;
+}
+.fa-chevron-right {
+    margin: 0 10px;
+}
+.linkDetail {
+    color: #e1c340;
+}
+
+/* Main */
+.content-container {
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+.aside-view {
+    padding-right: 50px;
+}
+.product-image {
+    width: 500px;
+    height: 500px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.product-title {
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+}
+.line {
+    width: 100%;
+    background-color: #4cd7d0;
+    height: 2px;
+    margin: 20px 0;
+}
+
+.product-description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.fa-star {
+    color: #e1c340;
+}
+.product-price {
+    font-weight: 700;
+    font-size: 30px;
+    margin: 20px 0;
+    display: block;
+    color: #4cd7d0;
+    font-family: "Nunito", sans-serif;
+}
+.textCategory {
+    display: block;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.inputQuantity {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}
+.btn .fa-cart-shopping {
+    margin-right: 10px;
+}
+.icon-detailpage {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #6f6f6f;
+    margin-top: 10px;
+}
+
+/* Toast */
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 20px 0;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    min-width: 400px;
+    transition: all linear 0.3s;
+}
+.toast + .toast {
+    margin-top: 24px;
+}
+@keyframes ShowToast {
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes ClearToast {
+    to {
+        opacity: 0;
+    }
+}
+.toast--success {
+    border-color: green;
+}
+.toast__icon {
+    color: green;
+}
+.toast__icon {
+    font-size: 24px;
+}
+.toast__icon,
+.toast__close {
+    padding: 0 16px;
+}
+.toast__body {
+    flex-grow: 1;
+}
+.toast__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+.toast__msg {
+    font-size: 14px;
+    color: rgb(99, 99, 99);
+    margin-top: 6px;
+    line-height: 1;
+}
+.toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+#toast {
+    position: fixed;
+    top: 70px;
+    right: 32px;
+    z-index: 99999;
+}
+.toast__view {
+    color: green;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+}

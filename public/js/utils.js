@@ -39,5 +39,18 @@ const handleGetName = () => {
     }
 };
 
+const disableButton = () => {
+    let profile = localStorage.getItem("profile");
+    if (profile) {
+        const { vaiTro } = JSON.parse(profile);
+        console.log(vaiTro);
+        if (vaiTro === "admin") {
+            $("#btnAddToCart").attr("disabled", true);
+            $("#btn-checkout").attr("disabled", true);
+        }
+    }
+};
+
+disableButton();
 handleGetName();
 handleScroll();

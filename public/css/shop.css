@@ -142,7 +142,7 @@ main {
     flex-wrap: wrap;
 }
 .card {
-    max-width: 210px;
+    width: 210px;
     text-align: center;
     font-size: 16px;
     margin-bottom: 30px;
@@ -155,18 +155,16 @@ main {
     font-size: 18px;
 }
 
-.card button {
-    border: none;
-    outline: 0;
-    padding: 5px 10px;
+.card a {
     color: white;
     background-color: #e1c340;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    display: block;
     font-size: 16px;
+    padding: 5px 0;
 }
 
-.card button:hover {
+.card a:hover {
     opacity: 0.8;
 }

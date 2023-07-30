@@ -45,3 +45,24 @@ const login = () => {
             });
     }
 };
+
+const register = () => {
+    userName = $("#userNameInput").val();
+    passWord = $("#passWordInput").val();
+    if (validateInput(userName, passWord)) {
+        $.post("/login", { userName, passWord })
+            .then((res) => {
+                alert(res.message);
+                const profile = res.data;
+                localStorage.setItem("profile", JSON.stringify(profile));
+                if (profile.vaiTro === "user") {
+                    window.location.href = "/";
+                } else {
+                    window.location.href = "/management";
+                }
+            })
+            .catch((err) => {
+                alert(err.responseJSON.message);
+            });
+    }
+};

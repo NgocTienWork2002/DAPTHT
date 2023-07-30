@@ -15,10 +15,10 @@ const callApi = () => {
             for (let i = 0; i < productList.length; i++) {
                 let html = $(
                     `<div class="card">
-                    <img src="${productList[i].hinhAnh}" alt="Denim Jeans" style="width: 100%" />
+                    <img src="${productList[i].hinhAnh}" alt="Denim Jeans" style="width: 100%; min-height: 240px"/>
                     <h3>${productList[i].tenSP}</h3>
                     <p class="card-price">$${productList[i].giaTien}</p>
-                    <button>View Detail</button>
+                    <a href="/shop/${productList[i].maSP}">View Detail</a>
                     </div>`
                 );
                 $("#productListView").append(html);
