@@ -1,1 +1,170 @@
+:root {
+    --primaryColor: #e1c340;
+    --blackColor: #232323;
+    --grayColor: #6f6f6f;
+    --aquaColor: #4cd7d0;
+    --backgroundColor: #ffffff;
+}
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cabin", sans-serif;
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+    line-height: 28px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+li {
+    list-style-type: none;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Main */
+main {
+    padding: 30px 0;
+}
+.content_container {
+    display: flex;
+}
+.asideFilter {
+    width: 20%;
+    padding-right: 40px;
+}
+.contentView {
+    width: 80%;
+}
+.titleAside {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.list-category {
+    margin-bottom: 40px;
+}
+.filter-price {
+    display: flex;
+    justify-content: space-between;
+}
+.spanbetween {
+    margin: 0 20px;
+}
+.btnSearchFilter {
+    width: 100%;
+    border: none;
+    background-color: #e1c340;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnSearchFilter:hover {
+    background-color: #eace52;
+}
+.inputFilterPrice {
+    width: 100%;
+    outline: none;
+    border: solid 1px;
+    padding: 0 5px;
+}
+.li-category {
+    font-size: 16px;
+    padding: 5px 0;
+}
+.fa-paw {
+    color: #4cd7d0;
+    margin-right: 10px;
+}
+.searchView {
+    padding: 20px 20px;
+    background-color: #dddbdb;
+}
+.input-search {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 10px 10px;
+}
+.groupSearch {
+    width: 100%;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+}
+.groupSearch button {
+    background-color: #e1c340;
+    color: white;
+    border: none;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 30px;
+}
+.errorInput {
+    color: red;
+    text-align: center;
+    min-height: 20px;
+}
+.line {
+    width: 100%;
+    background-color: #6f6f6f;
+    height: 1px;
+    margin: 20px 0;
+}
+
+/* Card */
+.product-view-container {
+    display: flex;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+.card {
+    width: 210px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.card-price {
+    color: grey;
+    font-size: 18px;
+}
+
+.card a {
+    color: white;
+    background-color: #e1c340;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.card a:hover {
+    opacity: 0.8;
+}

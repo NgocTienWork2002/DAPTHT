@@ -54,3 +54,11 @@ ul {
     font-size: 14px;
     padding: 10px 20px 10px;
 }
+.buttonLogout {
+    margin: 0 10px;
+    background-color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
