@@ -1,14 +1,14 @@
 // <------------------------> Search <---------------------------->
 function Search() {
-  $.post(
-    "http://localhost:3000/management/searchbill",
-    {
-      month: $("#month").val(),
-    },
-    (data, status) => {
-      result = ``;
-      for (let i = 0; i < data.length; i++) {
-        result += `<tr class="content-table">
+    $.post(
+        "http://localhost:3000/management/searchbill",
+        {
+            month: $("#month").val(),
+        },
+        (data, status) => {
+            result = ``;
+            for (let i = 0; i < data.length; i++) {
+                result += `<tr class="content-table">
         <td class="px-[20px] py-[20px] text-center">${data[i].maHD}</td>
         <td class="px-[20px] py-[20px] text-center">${data[i].userName}</td>
         <td class="px-[20px] py-[20px] text-center">$${data[i].tongTien}</td>
@@ -18,17 +18,17 @@ function Search() {
           </div>
         </td>
       </tr>`;
-      }
-      $("#content-bill").html(result);
-    }
-  );
+            }
+            $("#content-bill").html(result);
+        }
+    );
 }
 // <------------------------> Product <---------------------------->
 function getProduct() {
-  $.get("http://localhost:3000/management/getproduct", function (data, status) {
-    let result = "";
-    for (let i = 0; i < data.length; i++) {
-      result += `
+    $.get("http://localhost:3000/management/getproduct", function (data, status) {
+        let result = "";
+        for (let i = 0; i < data.length; i++) {
+            result += `
       <tr class="content-table">
                 <td class="px-[20px] py-[20px] text-center">${data[i].maSP}</td>
                 <td class="px-[20px] py-[20px] text-center">
@@ -54,105 +54,95 @@ function getProduct() {
                 </td>
               </tr>
       `;
-    }
-    $("#content-Product").html(result);
-  });
+        }
+        $("#content-Product").html(result);
+    });
 }
 function upLoadProduct(idSP, tenSP, giaTien, hinhAnh, moTa) {
-  $("#idSP").val(idSP);
-  $("#Name").val(tenSP);
-  $("#Price").val(giaTien);
-  $("#Image").val(hinhAnh);
-  $("#Description").val(moTa);
+    $("#idSP").val(idSP);
+    $("#Name").val(tenSP);
+    $("#Price").val(giaTien);
+    $("#Image").val(hinhAnh);
+    $("#Description").val(moTa);
 }
 function Update() {
-  if (
-    $("#Name").val() == null ||
-    $("#Price").val() == null ||
-    $("#Image").val() == null ||
-    $("#Description").val() == null
-  ) {
-    alert("Lack of information");
-  } else {
-    $.post(
-      "http://localhost:3000/management/update",
-      {
-        id: $("#idSP").val(),
-        name: $("#Name").val(),
-        price: $("#Price").val(),
-        image: $("#Image").val(),
-        description: $("#Description").val(),
-      },
-      (data, status) => {
-        getProduct();
-        alert(data.message);
-      }
-    );
-  }
+    if ($("#Name").val() == "" || $("#Price").val() == "" || $("#Image").val() == "" || $("#Description").val() == "") {
+        alert("Lack of information");
+    } else {
+        $.post(
+            "http://localhost:3000/management/update",
+            {
+                id: $("#idSP").val(),
+                name: $("#Name").val(),
+                price: $("#Price").val(),
+                image: $("#Image").val(),
+                description: $("#Description").val(),
+            },
+            (data, status) => {
+                getProduct();
+                alert(data.message);
+            }
+        );
+    }
 }
 function Insert() {
-  if (
-    $("#Name").val() == null ||
-    $("#Price").val() == null ||
-    $("#Image").val() == null ||
-    $("#Description").val() == null
-  ) {
-    alert("Lack of information");
-  } else {
-    $.post(
-      "http://localhost:3000/management/insert",
-      {
-        name: $("#Name").val(),
-        price: $("#Price").val(),
-        image: $("#Image").val(),
-        description: $("#Description").val(),
-      },
-      (data, status) => {
-        $("#Name").val(null);
-        $("#Image").val(null);
-        $("#Price").val(null);
-        $("#Description").val(null);
-        getProduct();
-        alert(data.message);
-      }
-    );
-  }
+    if ($("#Name").val() == "" || $("#Price").val() == "" || $("#Image").val() == "" || $("#Description").val() == "") {
+        alert("Lack of information");
+    } else {
+        $.post(
+            "http://localhost:3000/management/insert",
+            {
+                name: $("#Name").val(),
+                price: $("#Price").val(),
+                image: $("#Image").val(),
+                description: $("#Description").val(),
+            },
+            (data, status) => {
+                $("#Name").val(null);
+                $("#Image").val(null);
+                $("#Price").val(null);
+                $("#Description").val(null);
+                getProduct();
+                alert(data.message);
+            }
+        );
+    }
 }
 function Delete(id) {
-  if (confirm("Do you delete this product ?") == true) {
-    $.post(
-      "/management/delete",
-      {
-        id: id,
-      },
-      (data, status) => {
-        alert(data.message);
-      }
-    );
-  } else {
-    return;
-  }
+    if (confirm("Do you delete this product ?") == true) {
+        $.post(
+            "/management/delete",
+            {
+                id: id,
+            },
+            (data, status) => {
+                alert(data.message);
+            }
+        );
+    } else {
+        return;
+    }
 }
 $(document).ready(function () {
-  getProduct();
-  getServices();
+    getProduct();
+    getServices();
 });
+
 function Tab(namePage) {
-  var i, tabcontent;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  document.getElementById(namePage).style.display = "block";
+    var i, tabcontent;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    document.getElementById(namePage).style.display = "block";
 }
+
 // <-----------------------> Services <------------------------------>
 function getServices() {
-  $.get(
-    "http://localhost:3000/management/getservices",
-    function (data, status) {
-      let result = "";
-      for (let i = 0; i < data.length; i++) {
-        result += `
+    $.get("http://localhost:3000/management/getservices", function (data, status) {
+        let result = "";
+        for (let i = 0; i < data.length; i++) {
+            result += `
       <tr class="content-table">
                 <td class="px-[20px] py-[20px] text-center">${data[i].maDV}</td>
                 <td class="px-[20px] py-[20px] text-center">${data[i].tenDV}</td>
@@ -166,81 +156,70 @@ function getServices() {
                 </td>
               </tr>
       `;
-      }
-      $("#content-Services").html(result);
-    }
-  );
+        }
+        $("#content-Services").html(result);
+    });
 }
 function upLoadServices(id, tenDV, giaDV, moTa) {
-  $("#idDV").val(id);
-  $("#tenDV").val(tenDV);
-  $("#giaDV").val(giaDV);
-  $("#motaDV").val(moTa);
+    $("#idDV").val(id);
+    $("#tenDV").val(tenDV);
+    $("#giaDV").val(giaDV);
+    $("#motaDV").val(moTa);
 }
 function updateServices() {
-  if (
-    $("#idDV").val() == null ||
-    $("#tenDV").val() == null ||
-    $("#giaDV").val() == null ||
-    $("#motaDV").val() == null
-  ) {
-    alert("Lack of information");
-  } else {
-    $.post(
-      "http://localhost:3000/management/updateservices",
-      {
-        id: $("#idDV").val(),
-        name: $("#tenDV").val(),
-        price: $("#giaDV").val(),
-        description: $("#motaDV").val(),
-      },
-      (data, status) => {
-        getServices();
-        alert(data.message);
-      }
-    );
-  }
+    if ($("#idDV").val() == "" || $("#tenDV").val() == "" || $("#giaDV").val() == "" || $("#motaDV").val() == "") {
+        alert("Lack of information");
+    } else {
+        $.post(
+            "http://localhost:3000/management/updateservices",
+            {
+                id: $("#idDV").val(),
+                name: $("#tenDV").val(),
+                price: $("#giaDV").val(),
+                description: $("#motaDV").val(),
+            },
+            (data, status) => {
+                getServices();
+                alert(data.message);
+            }
+        );
+    }
 }
 function insertServices() {
-  if (
-    $("#idDV").val() == null ||
-    $("#tenDV").val() == null ||
-    $("#giaDV").val() == null ||
-    $("#motaDV").val() == null
-  ) {
-    alert("Lack of information");
-  } else {
-    $.post(
-      "http://localhost:3000/management/insertservices",
-      {
-        id: $("#idDV").val(),
-        name: $("#tenDV").val(),
-        price: $("#giaDV").val(),
-        description: $("#motaDV").val(),
-      },
-      (data, status) => {
-        $("#Name").val(null);
-        $("#Image").val(null);
-        $("#Price").val(null);
-        $("#Description").val(null);
-        getServices();
-        alert(data.message);
-      }
-    );
-  }
+    if ($("#tenDV").val() == "" || $("#giaDV").val() == "" || $("#motaDV").val() == "") {
+        alert("Lack of information");
+    } else {
+        $.post(
+            "http://localhost:3000/management/insertservices",
+            {
+                id: $("#idDV").val(),
+                name: $("#tenDV").val(),
+                price: $("#giaDV").val(),
+                description: $("#motaDV").val(),
+            },
+            (data, status) => {
+                $("#Name").val(null);
+                $("#Image").val(null);
+                $("#Price").val(null);
+                $("#Description").val(null);
+                getServices();
+                alert(data.message);
+            }
+        );
+    }
 }
 function deleteServices(id) {
-  if (confirm("Do you delete this services ?") == true) {
-    $.post(
-      "/management/deleteservices",
-      {
-        id: id,
-      },
-      (data, status) => {
-        alert(data.message);
-      }
-    );
-  } else {
-    return;
-  }
+    if (confirm("Do you delete this services ?") == true) {
+        $.post(
+            "/management/deleteservices",
+            {
+                id: id,
+            },
+            (data, status) => {
+                alert(data.message);
+            }
+        );
+    } else {
+        return;
+    }
 }

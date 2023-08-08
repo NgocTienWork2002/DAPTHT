@@ -12,16 +12,26 @@ const callApi = () => {
     $.get(`/shop/products?name=${queryParams.name}&price_min=${queryParams.price_min}&price_max=${queryParams.price_max}`)
         .then((res) => {
             const productList = res.data;
-            for (let i = 0; i < productList.length; i++) {
+            if (productList.length === 0) {
                 let html = $(
-                    `<div class="card">
-                    <img src="${productList[i].hinhAnh}" alt="Denim Jeans" style="width: 100%; min-height: 240px"/>
-                    <h3>${productList[i].tenSP}</h3>
-                    <p class="card-price">$${productList[i].giaTien}</p>
-                    <a href="/shop/${productList[i].maSP}">View Detail</a>
+                    `<div class="notFoundView">
+                    <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/a60759ad1dabe909c46a817ecbf71878.png" alt="" style="width: 200px" />
+                    <div class="textNotFound">No products found</div>
                     </div>`
                 );
                 $("#productListView").append(html);
+            } else {
+                for (let i = 0; i < productList.length; i++) {
+                    let html = $(
+                        `<div class="card">
+                        <img src="${productList[i].hinhAnh}" alt="Denim Jeans" style="width: 100%; min-height: 240px"/>
+                        <h3>${productList[i].tenSP}</h3>
+                        <p class="card-price">$${productList[i].giaTien}</p>
+                        <a href="/shop/${productList[i].maSP}">View Detail</a>
+                        </div>`
+                    );
+                    $("#productListView").append(html);
+                }
             }
         })
         .catch((err) => {

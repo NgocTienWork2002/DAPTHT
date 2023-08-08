@@ -1,413 +1,333 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Customer Management</title>
-    <link rel="stylesheet" href="/css/management.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css" />
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
-      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/management.js"></script>
-  </head>
-  <body class="hiden">
-    <input type="checkbox" id="check" />
-    <header>
-      <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-      </label>
-      <div class="left_area">
-        <h3>P<span> AW</span></h3>
-      </div>
-      <div class="right_area">
-        <span style="color: #fff" class="Name"></span>
-        <a href="" class="logout_btn"><i class="fas fa-power-off"></i></a>
-      </div>
-    </header>
-    <div class="sidebar">
-      <center id="img">
-        <h4 id="h4">
-          <img
-            class="profile_image"
-            src="https://www.w3schools.com/howto/img_avatar.png"
-            alt=""
-          />
-          <span>User Name</span>
-        </h4>
-      </center>
-      <div class="flex flex-1 items-start justify-center flex-col p-[20px]">
-        <div
-          class="management_controll cursor-pointer"
-          onclick="Tab(event, 'home')"
-        >
-          <i class="fa-solid fa-house-chimney-user fa-beat"></i>
-          <span class="px-[10px]">Home</span>
+    <head>
+        <meta charset="utf-8" />
+        <title>Customer Management</title>
+        <link rel="stylesheet" href="/css/management.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="dist/sweetalert.css" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+            integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="/js/management.js"></script>
+    </head>
+    <body class="hiden">
+        <input type="checkbox" id="check" />
+        <header>
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div class="left_area">
+                <h3>P<span> AW</span></h3>
+            </div>
+            <div class="right_area">
+                <span style="color: #fff" class="Name"></span>
+                <a href="" class="logout_btn"><i class="fas fa-power-off"></i></a>
+            </div>
+        </header>
+        <div class="sidebar">
+            <center id="img">
+                <h4 id="h4">
+                    <img class="profile_image" src="https://www.w3schools.com/howto/img_avatar.png" alt="" />
+                    <span>User Name</span>
+                </h4>
+            </center>
+            <div class="flex flex-1 items-start justify-center flex-col p-[20px]">
+                <div class="management_controll cursor-pointer" onclick="Tab('home')">
+                    <i class="fa-solid fa-house-chimney-user fa-beat"></i>
+                    <span class="px-[10px]">Home</span>
+                </div>
+                <div class="management_controll cursor-pointer" onclick="Tab('product')">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="px-[10px]">Product</span>
+                </div>
+                <div class="management_controll cursor-pointer" onclick="Tab('services')">
+                    <i class="fa-solid fa-store"></i>
+                    <span class="px-[10px]">Services</span>
+                </div>
+                <div class="management_controll cursor-pointer" onclick="Tab('customer')">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="px-[10px]">Customer</span>
+                </div>
+            </div>
         </div>
-        <div
-          class="management_controll cursor-pointer"
-          onclick="Tab(event,'product')"
-        >
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="px-[10px]">Product</span>
+        <div class="content">
+            <div id="home" class="home p-[21px] tabcontent">
+                <div class="w-full flex flex-1 flex-row">
+                    <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
+                        <div class="w-full flex flex-row flex-1 justify-between items-center">
+                            <div class="flex flex-col">
+                                <p class="text-[#1e9ff2] text-2xl">850</p>
+                                <h6 class="font-thin text-xs">Product Sold</h6>
+                            </div>
+                            <i class="fa-solid fa-shop fa-2xl text-[#1e9ff2]"></i>
+                        </div>
+                        <div class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]">
+                            <div class="w-[90%] h-full background1 rounded-[15px]"></div>
+                        </div>
+                    </div>
+                    <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
+                        <div class="w-full flex flex-row flex-1 justify-between items-center">
+                            <div class="flex flex-col">
+                                <p class="text-[#FF9752] text-2xl">$748</p>
+                                <h6 class="font-thin text-xs">Net Profit</h6>
+                            </div>
+                            <i class="fa-regular fa-newspaper fa-2xl text-[#FF9752]"></i>
+                        </div>
+                        <div class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]">
+                            <div class="w-[50%] h-full background2 rounded-[15px]"></div>
+                        </div>
+                    </div>
+                    <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
+                        <div class="w-full flex flex-row flex-1 justify-between items-center">
+                            <div class="flex flex-col">
+                                <p class="text-[#42D6A1] text-2xl">146</p>
+                                <h6 class="font-thin text-xs">New Customer</h6>
+                            </div>
+                            <i class="fa-regular fa-circle-user fa-2xl text-[#42D6A1]"></i>
+                        </div>
+                        <div class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]">
+                            <div class="w-[70%] h-full background3 rounded-[15px]"></div>
+                        </div>
+                    </div>
+                    <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
+                        <div class="w-full flex flex-row flex-1 justify-between items-center">
+                            <div class="flex flex-col">
+                                <p class="text-[#FF919F] text-2xl">99.89%</p>
+                                <h6 class="font-thin text-xs">Customer Satisfaction</h6>
+                            </div>
+                            <i class="fa-regular fa-heart fa-2xl text-[#FF919F]"></i>
+                        </div>
+                        <div class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]">
+                            <div class="w-[10%] h-full background4 rounded-[15px]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex basis-9/12 flex-row mt-[20px]">
+                    <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
+                        <h3>Product Sale</h3>
+                        <div class="mt-[25px]">
+                            <canvas id="myChart" class="w-full h-[300px] mb-[0]"></canvas>
+                        </div>
+                    </div>
+                    <div class="flex flex-col basis-[30%] bg-white rounded-[15px]">
+                        <div class="flex flex-row justify-between mb-[25px] p-[1.5rem]">
+                            <span class="font-medium tracking-wider text-[black]">New Order</span>
+                            <i class="fa-solid fa-spinner"></i>
+                        </div>
+                        <div class="flex flex-col max-h-9">
+                            <table>
+                                <thead class="border-collapse">
+                                    <tr>
+                                        <th class="px-[20px] py-[20px] align-middle">Product</th>
+                                        <th class="px-[20px] py-[20px] align-middle">Customer</th>
+                                        <th class="px-[20px] py-[20px] align-middle">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="content-table">
+                                        <td class="px-[20px] py-[20px] text-center">Iphone X</td>
+                                        <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                        <td class="px-[20px] py-[20px] text-center">$200</td>
+                                    </tr>
+                                    <tr class="content-table">
+                                        <td class="px-[20px] py-[20px] text-center">Iphone X</td>
+                                        <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                        <td class="px-[20px] py-[20px] text-center">$200</td>
+                                    </tr>
+                                    <tr class="content-table">
+                                        <td class="px-[20px] py-[20px] text-center">Iphone X</td>
+                                        <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                        <td class="px-[20px] py-[20px] text-center">$200</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex flex-1 flex-col mt-[15px] rounded-[15px] mb-[15px]">
+                    <div class="w-full bg-[white] rounded-[15px] ml-[5px]">
+                        <table class="w-full">
+                            <thead class="border-collapse">
+                                <tr>
+                                    <th class="px-[20px] py-[20px] align-middle">Invoice#</th>
+                                    <th class="px-[20px] py-[20px] align-middle">Customer Name</th>
+                                    <th class="px-[20px] py-[20px] align-middle">Product</th>
+                                    <th class="px-[20px] py-[20px] align-middle">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="content-table">
+                                    <td class="px-[20px] py-[20px] text-center">MLS</td>
+                                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                    <td class="px-[20px] py-[20px] text-center">Galaxy</td>
+                                    <td class="px-[20px] py-[20px] text-center">$4000</td>
+                                </tr>
+                                <tr class="content-table">
+                                    <td class="px-[20px] py-[20px] text-center">MLS</td>
+                                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                    <td class="px-[20px] py-[20px] text-center">Galaxy</td>
+                                    <td class="px-[20px] py-[20px] text-center">$4000</td>
+                                </tr>
+                                <tr class="content-table">
+                                    <td class="px-[20px] py-[20px] text-center">MLS</td>
+                                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                    <td class="px-[20px] py-[20px] text-center">Galaxy</td>
+                                    <td class="px-[20px] py-[20px] text-center">$4000</td>
+                                </tr>
+                                <tr class="content-table">
+                                    <td class="px-[20px] py-[20px] text-center">MLS</td>
+                                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
+                                    <td class="px-[20px] py-[20px] text-center">Galaxy</td>
+                                    <td class="px-[20px] py-[20px] text-center">$4000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="w-full flex flex-1 flex-col mt-[15px] rounded-[15px] mb-[15px]">
+                    <div class="w-full bg-[white] rounded-[15px] ml-[5px] py-[10px]">
+                        <div class="flex flex-1 justify-center items-center">
+                            <span class="mx-[10px]">Month: </span>
+                            <select class="px-[5px] py-[5px] w-[100px] bg-[white] flex text-center" id="month" onclick="Search()">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <table class="w-full bg-white rounded-3xl">
+                                <thead class="border-collapse">
+                                    <tr>
+                                        <th class="px-[20px] py-[20px] align-middle">#Id</th>
+                                        <th class="px-[20px] py-[20px] align-middle">Name</th>
+                                        <th class="px-[20px] py-[20px] align-middle">Total</th>
+                                        <th class="px-[20px] py-[20px] align-middle"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="content-bill"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="product" class="product p-[21px] tabcontent hidden">
+                <div class="flex flex-1 flex-wrap flex-row mb-[20px]">
+                    <div class="controll-panel">
+                        <input type="hidden" id="idSP" />
+                        <span class="title-controll">Product Name : </span>
+                        <input type="text" id="Name" focus />
+                    </div>
+                    <div class="controll-panel">
+                        <span class="title-controll">Price : </span>
+                        <input type="number" id="Price" />
+                    </div>
+                    <div class="controll-panel">
+                        <span class="title-controll">Image Product : </span>
+                        <input type="text" id="Image" />
+                    </div>
+                    <div class="controll-panel">
+                        <span class="title-controll">Description : </span>
+                        <textarea name="comment" id="Description" class="w-[200px] h-[30px]"></textarea>
+                    </div>
+                    <div class="controll-panel">
+                        <button class="p-[8px] bg-white rounded-3xl btn-addItem" onclick="Insert()">Add Item</button>
+                        <button class="p-[8px] bg-white rounded-3xl btn-addItem mx-[10px]" onclick="Update()">Update Item</button>
+                    </div>
+                </div>
+                <div class="flex flex-1 h-[500px] overflow-y-scroll rounded-3xl">
+                    <table class="w-full bg-white rounded-3xl">
+                        <thead class="border-collapse">
+                            <tr>
+                                <th class="px-[20px] py-[20px] align-middle">#Id</th>
+                                <th class="px-[20px] py-[20px] align-middle">Products Images</th>
+                                <th class="px-[20px] py-[20px] align-middle">Products Name</th>
+                                <th class="px-[20px] py-[20px] align-middle">Price</th>
+                                <th class="px-[20px] py-[20px] align-middle"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="content-Product"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="services" class="services p-[21px] tabcontent hidden">
+                <div class="flex flex-1 flex-wrap flex-row mb-[20px]">
+                    <div class="controll-panel">
+                        <input type="hidden" id="idDV" />
+                        <span class="title-controll">Services Name : </span>
+                        <input type="text" id="tenDV" focus />
+                    </div>
+                    <div class="controll-panel">
+                        <span class="title-controll">Price : </span>
+                        <input type="number" id="giaDV" />
+                    </div>
+                    <div class="controll-panel">
+                        <span class="title-controll">Description : </span>
+                        <textarea name="comment" id="motaDV" class="w-[200px] h-[30px]"></textarea>
+                    </div>
+                    <div class="controll-panel">
+                        <button class="p-[8px] bg-white rounded-3xl btn-addItem" onclick="insertServices()">Add Services</button>
+                        <button class="p-[8px] bg-white rounded-3xl btn-addItem mx-[10px]" onclick="updateServices()">Update Services</button>
+                    </div>
+                </div>
+                <div class="flex flex-1 h-[500px] overflow-y-scroll rounded-3xl">
+                    <table class="w-full bg-white rounded-3xl">
+                        <thead class="border-collapse">
+                            <tr>
+                                <th class="px-[20px] py-[20px] align-middle">#Id</th>
+                                <th class="px-[20px] py-[20px] align-middle">Services Name</th>
+                                <th class="px-[20px] py-[20px] align-middle">Price</th>
+                                <th class="px-[20px] py-[20px] align-middle"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="content-Services"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div
-          class="management_controll cursor-pointer"
-          onclick="Tab(event,'services')"
-        >
-          <i class="fa-solid fa-store"></i>
-          <span class="px-[10px]">Services</span>
-        </div>
-        <div
-          class="management_controll cursor-pointer"
-          onclick="Tab(event,'customer')"
-        >
-          <i class="fas fa-user-circle"></i>
-          <span class="px-[10px]">Customer</span>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div id="home" class="home p-[21px] tabcontent">
-        <div class="w-full flex flex-1 flex-row">
-          <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
-            <div
-              class="w-full flex flex-row flex-1 justify-between items-center"
-            >
-              <div class="flex flex-col">
-                <p class="text-[#1e9ff2] text-2xl">850</p>
-                <h6 class="font-thin text-xs">Product Sold</h6>
-              </div>
-              <i class="fa-solid fa-shop fa-2xl text-[#1e9ff2]"></i>
-            </div>
-            <div
-              class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]"
-            >
-              <div class="w-[90%] h-full background1 rounded-[15px]"></div>
-            </div>
-          </div>
-          <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
-            <div
-              class="w-full flex flex-row flex-1 justify-between items-center"
-            >
-              <div class="flex flex-col">
-                <p class="text-[#FF9752] text-2xl">$748</p>
-                <h6 class="font-thin text-xs">Net Profit</h6>
-              </div>
-              <i class="fa-regular fa-newspaper fa-2xl text-[#FF9752]"></i>
-            </div>
-            <div
-              class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]"
-            >
-              <div class="w-[50%] h-full background2 rounded-[15px]"></div>
-            </div>
-          </div>
-          <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
-            <div
-              class="w-full flex flex-row flex-1 justify-between items-center"
-            >
-              <div class="flex flex-col">
-                <p class="text-[#42D6A1] text-2xl">146</p>
-                <h6 class="font-thin text-xs">New Customer</h6>
-              </div>
-              <i class="fa-regular fa-circle-user fa-2xl text-[#42D6A1]"></i>
-            </div>
-            <div
-              class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]"
-            >
-              <div class="w-[70%] h-full background3 rounded-[15px]"></div>
-            </div>
-          </div>
-          <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
-            <div
-              class="w-full flex flex-row flex-1 justify-between items-center"
-            >
-              <div class="flex flex-col">
-                <p class="text-[#FF919F] text-2xl">99.89%</p>
-                <h6 class="font-thin text-xs">Customer Satisfaction</h6>
-              </div>
-              <i class="fa-regular fa-heart fa-2xl text-[#FF919F]"></i>
-            </div>
-            <div
-              class="w-full h-[7px] bg-[gray] mt-[10px] shadow-[0_10px_18px_0_rgba(62,57,107,.2)] rounded-[15px]"
-            >
-              <div class="w-[10%] h-full background4 rounded-[15px]"></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex basis-9/12 flex-row mt-[20px]">
-          <div class="p-[1.5rem] bg-white flex-1 rounded-[15px] mx-[15px]">
-            <h3>Product Sale</h3>
-            <div class="mt-[25px]">
-              <canvas id="myChart" class="w-full h-[300px] mb-[0]"></canvas>
-            </div>
-          </div>
-          <div class="flex flex-col basis-[30%] bg-white rounded-[15px]">
-            <div class="flex flex-row justify-between mb-[25px] p-[1.5rem]">
-              <span class="font-medium tracking-wider text-[black]"
-                >New Order</span
-              >
-              <i class="fa-solid fa-spinner"></i>
-            </div>
-            <div class="flex flex-col max-h-9">
-              <table>
-                <thead class="border-collapse">
-                  <tr>
-                    <th class="px-[20px] py-[20px] align-middle">Product</th>
-                    <th class="px-[20px] py-[20px] align-middle">Customer</th>
-                    <th class="px-[20px] py-[20px] align-middle">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="content-table">
-                    <td class="px-[20px] py-[20px] text-center">Iphone X</td>
-                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                    <td class="px-[20px] py-[20px] text-center">$200</td>
-                  </tr>
-                  <tr class="content-table">
-                    <td class="px-[20px] py-[20px] text-center">Iphone X</td>
-                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                    <td class="px-[20px] py-[20px] text-center">$200</td>
-                  </tr>
-                  <tr class="content-table">
-                    <td class="px-[20px] py-[20px] text-center">Iphone X</td>
-                    <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                    <td class="px-[20px] py-[20px] text-center">$200</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full flex flex-1 flex-col mt-[15px] rounded-[15px] mb-[15px]"
-        >
-          <div class="w-full bg-[white] rounded-[15px] ml-[5px]">
-            <table class="w-full">
-              <thead class="border-collapse">
-                <tr>
-                  <th class="px-[20px] py-[20px] align-middle">Invoice#</th>
-                  <th class="px-[20px] py-[20px] align-middle">
-                    Customer Name
-                  </th>
-                  <th class="px-[20px] py-[20px] align-middle">Product</th>
-                  <th class="px-[20px] py-[20px] align-middle">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="content-table">
-                  <td class="px-[20px] py-[20px] text-center">MLS</td>
-                  <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                  <td class="px-[20px] py-[20px] text-center">Galaxy</td>
-                  <td class="px-[20px] py-[20px] text-center">$4000</td>
-                </tr>
-                <tr class="content-table">
-                  <td class="px-[20px] py-[20px] text-center">MLS</td>
-                  <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                  <td class="px-[20px] py-[20px] text-center">Galaxy</td>
-                  <td class="px-[20px] py-[20px] text-center">$4000</td>
-                </tr>
-                <tr class="content-table">
-                  <td class="px-[20px] py-[20px] text-center">MLS</td>
-                  <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                  <td class="px-[20px] py-[20px] text-center">Galaxy</td>
-                  <td class="px-[20px] py-[20px] text-center">$4000</td>
-                </tr>
-                <tr class="content-table">
-                  <td class="px-[20px] py-[20px] text-center">MLS</td>
-                  <td class="px-[20px] py-[20px] text-center">Khôi Nguyên</td>
-                  <td class="px-[20px] py-[20px] text-center">Galaxy</td>
-                  <td class="px-[20px] py-[20px] text-center">$4000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="w-full flex flex-1 flex-col mt-[15px] rounded-[15px] mb-[15px]"
-        >
-          <div class="w-full bg-[white] rounded-[15px] ml-[5px] py-[10px]">
-            <div class="flex flex-1 justify-center items-center">
-              <span class="mx-[10px]">Month: </span>
-              <select
-                class="px-[5px] py-[5px] w-[100px] bg-[white] flex text-center"
-                id="month"
-                onclick="Search()"
-              >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-              </select>
-            </div>
-            <div>
-              <table class="w-full bg-white rounded-3xl">
-                <thead class="border-collapse">
-                  <tr>
-                    <th class="px-[20px] py-[20px] align-middle">#Id</th>
-                    <th class="px-[20px] py-[20px] align-middle">Name</th>
-                    <th class="px-[20px] py-[20px] align-middle">Total</th>
-                    <th class="px-[20px] py-[20px] align-middle"></th>
-                  </tr>
-                </thead>
-                <tbody id="content-bill"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="product" class="product p-[21px] tabcontent hidden">
-        <div class="flex flex-1 flex-wrap flex-row mb-[20px]">
-          <div class="controll-panel">
-            <input type="hidden" id="idSP" />
-            <span class="title-controll">Product Name : </span>
-            <input type="text" id="Name" focus />
-          </div>
-          <div class="controll-panel">
-            <span class="title-controll">Price : </span>
-            <input type="number" id="Price" />
-          </div>
-          <div class="controll-panel">
-            <span class="title-controll">Image Product : </span>
-            <input type="text" id="Image" />
-          </div>
-          <div class="controll-panel">
-            <span class="title-controll">Description : </span>
-            <textarea
-              name="comment"
-              id="Description"
-              class="w-[200px] h-[30px]"
-            ></textarea>
-          </div>
-          <div class="controll-panel">
-            <button
-              class="p-[8px] bg-white rounded-3xl btn-addItem"
-              onclick="Insert()"
-            >
-              Add Item
-            </button>
-            <button
-              class="p-[8px] bg-white rounded-3xl btn-addItem mx-[10px]"
-              onclick="Update()"
-            >
-              Update Item
-            </button>
-          </div>
-        </div>
-        <div class="flex flex-1 h-[500px] overflow-y-scroll rounded-3xl">
-          <table class="w-full bg-white rounded-3xl">
-            <thead class="border-collapse">
-              <tr>
-                <th class="px-[20px] py-[20px] align-middle">#Id</th>
-                <th class="px-[20px] py-[20px] align-middle">
-                  Products Images
-                </th>
-                <th class="px-[20px] py-[20px] align-middle">Products Name</th>
-                <th class="px-[20px] py-[20px] align-middle">Price</th>
-                <th class="px-[20px] py-[20px] align-middle"></th>
-              </tr>
-            </thead>
-            <tbody id="content-Product"></tbody>
-          </table>
-        </div>
-      </div>
-      <div id="services" class="services p-[21px] tabcontent hidden">
-        <div class="flex flex-1 flex-wrap flex-row mb-[20px]">
-          <div class="controll-panel">
-            <input type="hidden" id="idDV" />
-            <span class="title-controll">Services Name : </span>
-            <input type="text" id="tenDV" focus />
-          </div>
-          <div class="controll-panel">
-            <span class="title-controll">Price : </span>
-            <input type="number" id="giaDV" />
-          </div>
-          <div class="controll-panel">
-            <span class="title-controll">Description : </span>
-            <textarea
-              name="comment"
-              id="motaDV"
-              class="w-[200px] h-[30px]"
-            ></textarea>
-          </div>
-          <div class="controll-panel">
-            <button
-              class="p-[8px] bg-white rounded-3xl btn-addItem"
-              onclick="insertServices()"
-            >
-              Add Services
-            </button>
-            <button
-              class="p-[8px] bg-white rounded-3xl btn-addItem mx-[10px]"
-              onclick="updateServices()"
-            >
-              Update Services
-            </button>
-          </div>
-        </div>
-        <div class="flex flex-1 h-[500px] overflow-y-scroll rounded-3xl">
-          <table class="w-full bg-white rounded-3xl">
-            <thead class="border-collapse">
-              <tr>
-                <th class="px-[20px] py-[20px] align-middle">#Id</th>
-                <th class="px-[20px] py-[20px] align-middle">Services Name</th>
-                <th class="px-[20px] py-[20px] align-middle">Price</th>
-                <th class="px-[20px] py-[20px] align-middle"></th>
-              </tr>
-            </thead>
-            <tbody id="content-Services"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    var ctx = document.getElementById("myChart").getContext("2d");
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "June"],
-        datasets: [
-          {
-            labels: "none",
-            data: [0, 100, 50, 600, 300, 400],
-            borderWidth: 2.5,
-          },
-        ],
-      },
-      options: {
-        maintainAspectRatio: false,
-        plugins: {
-          legend: false,
-        },
-        scales: {
-          x: {
-            display: false,
-          },
-        },
-      },
-    });
-  </script>
+    </body>
+    <script>
+        var ctx = document.getElementById("myChart").getContext("2d");
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "June"],
+                datasets: [
+                    {
+                        labels: "none",
+                        data: [0, 100, 50, 600, 300, 400],
+                        borderWidth: 2.5,
+                    },
+                ],
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: false,
+                },
+                scales: {
+                    x: {
+                        display: false,
+                    },
+                },
+            },
+        });
+    </script>
 </html>

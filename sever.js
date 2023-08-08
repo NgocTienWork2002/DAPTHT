@@ -17,11 +17,12 @@ const blogRoute = require("./routes/blog.route");
 const contractRoute = require("./routes/contract.route");
 const shoppingcartRoute = require("./routes/shoppingcart.route");
 const managementRoute = require("./routes/management.route");
-const signUpRoute = require("./routes/sign.route")
+const signUpRoute = require("./routes/sign.route");
 const shopRoute = require("./routes/shop.route");
+const profileRoute = require("./routes/profile.route");
 
 app.use("/login", authRoute);
-app.use("/sign", signUpRoute)
+app.use("/sign", signUpRoute);
 app.use("/", homeRoute);
 app.use("/about", aboutRoute);
 app.use("/booking", bookingRoute);
@@ -30,7 +31,8 @@ app.use("/contract", contractRoute);
 app.use("/shoppingcart", shoppingcartRoute);
 app.use("/management", managementRoute);
 app.use("/shop", shopRoute);
+app.use("/profile", profileRoute);
 
 app.listen(3000, () => {
-  console.log("Sever is running");
+    console.log("Sever is running");
 });

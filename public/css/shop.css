@@ -134,6 +134,13 @@ main {
     height: 1px;
     margin: 20px 0;
 }
+.notFoundView {
+    text-align: center;
+    margin: 0 auto;
+}
+.textNotFound {
+    font-size: 26px;
+}
 
 /* Card */
 .product-view-container {

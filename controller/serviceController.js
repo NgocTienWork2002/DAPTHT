@@ -1,104 +1,117 @@
 const { executeQuery } = require("../models/database");
-
+const cService = require("../models/cService");
+const cBill = require("../models/cBill");
+const cBooking = require("../models/cBooking");
 class Service {
-  getBookingPage(req, res) {
-    res.render("pages/booking");
-  }
-  async getServices(req, res) {
-    let getServices = `Select * FROM DICHVU`;
-    res.send(await executeQuery(getServices));
-  }
-  async updateServices(req, res) {
-    const id = req.body.id;
-    const name = req.body.name;
-    const price = req.body.price;
-    const description = req.body.description;
-    try {
-      let updateService = `UPDATE DICHVU SET tenDV='${name}', giaDV=${Number(
-        price
-      )},moTa='${description}',trangThai=1 WHERE maDV=${id}`;
-      await executeQuery(updateService);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-        data: error,
-      });
+    getBookingPage(req, res) {
+        res.render("pages/booking");
     }
-  }
-  async insertServices(req, res) {
-    const name = req.body.name;
-    const price = req.body.price;
-    const description = req.body.description;
-    try {
-      let insertServices = `INSERT INTO DICHVU(tenDV, giaDV, trangThai, moTa) VALUES ('${name}', ${Number(
-        price
-      )},1,'${description}')`;
-      executeQuery(insertServices);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-        data: error,
-      });
+    async getServices(req, res) {
+        let Service = new cService();
+        const data = await Service.getListService();
+        res.send(data);
     }
-  }
-  async deleteServices(req, res) {
-    try {
-      let deleteservices = `UPDATE DICHVU SET trangThai=0 WHERE maDV=${Number(
-        req.body.id
-      )}`;
-      await executeQuery(deleteservices);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-      });
-    }
-  }
-
-    async getService(req, res) {
+    async updateServices(req, res) {
+        const id = req.body.id;
+        const name = req.body.name;
+        const price = req.body.price;
+        const description = req.body.description;
+        let Services = new cService(id, name, price, 1, description);
         try {
-            const queryString = `select * from DICHVU where trangThai = 1`;
-            const responseData = await executeQuery(queryString);
+            await Services.updatecServices();
             res.status(200).json({
-                message: 'Lấy dịch vụ thành công',
-                data: responseData
-            })
+                message: "Sucess",
+            });
         } catch (error) {
             res.status(500).json({
                 message: "Lỗi",
                 data: error,
             });
         }
-
+    }
+    async insertServices(req, res) {
+        const name = req.body.name;
+        const price = req.body.price;
+        const description = req.body.description;
+        let Service = new cService();
+        Service.tenDV = name;
+        Service.giaDV = price;
+        Service.moTa = description;
+        try {
+            await Service.insertServices();
+            res.status(200).json({
+                message: "Sucess",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+                data: error,
+            });
+        }
+    }
+    async deleteServices(req, res) {
+        let Service = new cService();
+        Service.maDV = req.body.id;
+        try {
+            await Service.deleteServices();
+            res.status(200).json({
+                message: "Sucess",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+            });
+        }
+    }
+    async getService(req, res) {
+        try {
+            let Service = new cService();
+            let listCombo = await Service.getServicesByStatus();
+            res.status(200).json({
+                message: "Lấy dịch vụ thành công",
+                data: listCombo,
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+                data: error,
+            });
+        }
     }
 
     async bookingService(req, res) {
         try {
-            console.log(req.body);
-            const { formData } = req.body
-            const queryString = `insert into HOADON (userName,tongTien, ngDat) values ( '${formData.userName}', ${Number(formData.tongtien)}, '${formData.date}')`;
-            await executeQuery(queryString);
-            const queryString2 = `select @@IDENTITY as Mahoadon`;
-            const maHD = await executeQuery(queryString2);
-            console.log(maHD);
-            const queryString3 = `insert into DATLICHDICHVU (maDV,ngay,gio,hoTen,soDienThoai) values (${Number(formData.id)}, '${formData.date}' , '${formData.time}', '${formData.fullName}' , '${formData.phone}')`;
-            await executeQuery(queryString3);
-            const queryString4 = `select @@IDENTITY as MaDLDV `;
-            const MaDLDV = await executeQuery(queryString4);
-            console.log(MaDLDV);
-            const queryString5 = `insert into CHITIETHD ( maHD ,maDLDV, thanhTien) values (${maHD[0].Mahoadon}, ${MaDLDV[0].MaDLDV}, ${Number(formData.tongtien)})`;
-            await executeQuery(queryString5);
+            const { formData } = req.body;
+            let Service = new cBill();
+            Service.userName = formData.userName;
+            Service.tongTien = formData.tongtien;
+            Service.ngayDat = formData.date;
+
+            // <--------------> Insert HD <---------->
+            await Service.insertBill();
+            const { maHD } = await Service.insertBill();
+            // <--------------->
+            // const queryString3 = `insert into DATLICHDICHVU (maDV,ngay,gio,hoTen,soDienThoai) values (${Number(formData.id)}, '${
+            //     formData.date
+            // }' , '${formData.time}', '${formData.fullName}' , '${formData.phone}')`;
+            // await executeQuery(queryString3);
+            // const queryString4 = `select @@IDENTITY as MaDLDV `;
+            // const MaDLDV = await executeQuery(queryString4);
+
+            const booking = new cBooking();
+            booking.maDV = formData.id;
+            booking.ngay;
+            booking.gio;
+            booking.hoTen;
+            booking.soDienThoai;
+
+            // const queryString5 = `insert into CHITIETHD ( maHD ,maDLDV, thanhTien) values (${maHD[0].Mahoadon}, ${
+            //     MaDLDV[0].MaDLDV
+            // }, ${Number(formData.tongtien)})`;
+            // await executeQuery(queryString5);
             res.status(200).json({
-                message: 'Booking Succesfully',
-            })
+                message: "Booking Succesfully",
+            });
         } catch (error) {
             res.status(500).json({
                 message: "Error",

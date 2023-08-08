@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/profile.css" />
+        <script src="/js/profile.js"></script>
+        <script src="/js/moment.js"></script>
+    </head>
+    <body>
+        <%- include('../partials/header.ejs') %>
+        <main>
+            <!-- Modal change password -->
+            <div id="myModal" class="modal">
+                <div class="modal__layout">
+                    <div class="modal-title">
+                        <h3>Change Password</h3>
+                    </div>
+                    <div class="modal__content">
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>Username</label></div>
+                            <span class="grid__form-labellock" id="userNameModal"></span>
+                        </div>
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>Password</label></div>
+                            <input class="grid__form-input modal-input" type="password" placeholder="Password" id="afterPass" onchange="onchangeAfterPass()" />
+                        </div>
+                        <div class="grid__form">
+                            <div class="grid__form-label"><label>New Password</label></div>
+                            <input class="grid__form-input modal-input" type="password" placeholder="New Password" id="newPass" onchange="onchangeNewPass()" />
+                        </div>
+                        <div class="modal-content-checkbox"><input type="checkbox" class="input-checkbox" id="checkboxid" /><span>Show Password</span></div>
+                    </div>
+                    <div class="modal-control">
+                        <button class="btn-modal" id="btnCancel">Cancel</button>
+                        <button class="btn-modal btn-ok-modal" id="btnOk">Change</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal detail bills -->
+            <div id="myModal-bill" class="modal">
+                <div class="modal__layout modal__layout-bill">
+                    <div class="modal__bill-title">
+                        <h3>Order: <span id="maHoaDon"></span></h3>
+                        <i id="btnExit" class="fas fa-times"></i>
+                    </div>
+                    <div class="modal__bill-content">
+                        <table class="table-bill" id="table">
+                            <thead class="modal__bill-thead">
+                                <tr class="modal__bill-tr">
+                                    <th class="modal__bill-th">Product Name</th>
+                                    <th class="modal__bill-th">Image</th>
+                                    <th class="modal__bill-th">Quantity</th>
+                                    <th class="modal__bill-th">Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="modal__bill-tbody" id="listDetailBill"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal__bill-footer">
+                        <div style="color: black">Date: <span id="date-create"></span></div>
+                        <div style="color: black">Coupon ID: <span id="coupon-id">1</span></div>
+                        <div>Total bills : $<span id="total-bill-detail"></span></div>
+                    </div>
+                </div>
+            </div>
+            <section class="section">
+                <div class="grid__content-left">
+                    <div class="grid__left-img">
+                        <img src="/images/avatarprofile.png" alt="Hinh nen" class="image__user" id="avatarKH" />
+                    </div>
+                    <h3 class="user__name" id="fullNameDisplay">Wonder Women</h3>
+                    <div class="grid__left-menu">
+                        <button class="tablinks" onclick="openTab(event, 'account')" id="defaultOpen"><i class="fas fa-user icon-menu"></i>My Account</button>
+                        <button class="tablinks" onclick="openTab(event, 'bill')"><i class="fas fa-wallet icon-menu"></i>My Bill</button>
+                    </div>
+                </div>
+                <!-- View Account -->
+                <div class="grid__content-right" id="account">
+                    <div class="grid__header">
+                        <h2>My Profile</h2>
+                        <span class="grid__header-note">Manage profile information</span>
+                    </div>
+                    <div class="grid__middle">
+                        <div class="grid__middle-left">
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Username</label></div>
+                                <span class="grid__form-labellock" id="userName"></span>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Password</label></div>
+                                <span class="grid__form-labellock">**********</span>
+                                <span class="grid__form-labelchange" onclick="loadModal()">Change</span>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Full Name</label></div>
+                                <input class="grid__form-input" type="text" id="fullName" placeholder="Full Name" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Number Phone</label></div>
+                                <input class="grid__form-input" type="text" id="phone" placeholder="Number Phone" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Address</label></div>
+                                <input class="grid__form-input" type="text" id="address" placeholder="Address" />
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Gender</label></div>
+                                <div class="grid__form-radio">
+                                    <input id="male-radio" class="form__radio" type="radio" name="gender" value="True" />
+                                    <label for="male-radio">Male</label>
+                                    <input id="female-radio" class="form__radio" type="radio" name="gender" value="False" />
+                                    <label for="female-radio">Female</label>
+                                </div>
+                            </div>
+                            <div class="grid__form">
+                                <div class="grid__form-label"><label>Birthday</label></div>
+                                <input class="grid__form-input" type="date" id="date" />
+                            </div>
+                            <div class="grid__form" style="float: right">
+                                <button class="grid__form-btnsave" id="btn-saveUser" onclick="updateInfoUser()">Save</button>
+                            </div>
+                        </div>
+                        <div class="grid__middle-right"></div>
+                    </div>
+                </div>
+
+                <!-- View Bill -->
+                <div class="grid__content-right" id="bill">
+                    <div class="grid__header">
+                        <h2>My Bills</h2>
+                        <span class="grid__header-note">Manage bills information</span>
+                    </div>
+                    <div class="grid__middle">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id Bill</th>
+                                    <th scope="col">Order creation date</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="listBills"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <%- include('../partials/footer.ejs') %> <%- include('../partials/utils.ejs') %>
+    </body>
+</html>

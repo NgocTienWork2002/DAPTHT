@@ -21,6 +21,15 @@ const validateInput = (userName, passWord) => {
     return valid;
 };
 
+const handleProjected = () => {
+    let profile = localStorage.getItem("profile");
+    if (profile) {
+        window.location.href = "/";
+    }
+};
+
+handleProjected();
+
 const handleFocus = (idInput) => {
     document.getElementById(idInput).innerText = "";
 };

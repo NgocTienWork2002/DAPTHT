@@ -1,81 +1,89 @@
 const { executeQuery } = require("../models/database");
+const cProduct = require("../models/cProduct");
 
 class Product {
-  getShoppingCartPage(req, res) {
-    res.render("pages/shoppingcart");
-  }
-  // <-------------------> Product <---------------->
-  async getProduct(req, res) {
-    let getProduct = `Select * from SANPHAM`;
-    res.send(await executeQuery(getProduct));
-  }
-  async updateProduct(req, res) {
-    const id = req.body.id;
-    const name = req.body.name;
-    const price = req.body.price;
-    const image = req.body.image;
-    const description = req.body.description;
-    try {
-      let updateProduct = `UPDATE SANPHAM SET tenSP='${name}', giaTien=${Number(
-        price
-      )}, hinhAnh='${image}', moTa='${description}' WHERE maSP=${id}`;
-      await executeQuery(updateProduct);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-        data: error,
-      });
+    getShoppingCartPage(req, res) {
+        res.render("pages/shoppingcart");
     }
-  }
-  async addProduct(req, res) {
-    const name = req.body.name;
-    const price = req.body.price;
-    const image = req.body.image;
-    const description = req.body.description;
-    try {
-      let insertProduct = `INSERT INTO SANPHAM(tenSP, moTa, giaTien,hinhAnh,trangThai) VALUES ('${name}', '${description}' ,${Number(
-        price
-      )},'${image}',1)`;
-      executeQuery(insertProduct);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-        data: error,
-      });
-    }
-  }
-  async deleteProduct(req, res) {
-    const id = req.body.id;
-    console.log(id);
-    try {
-      let deleteProduct = `UPDATE SANPHAM SET trangThai=0 WHERE maSP=${id}`;
-      await executeQuery(deleteProduct);
-      res.status(200).json({
-        message: "Sucess",
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Lỗi",
-      });
-    }
-  }
 
     getShopPage(req, res) {
         res.render("pages/shop");
     }
+    // <-------------------> Product <---------------->
+    async getProduct(req, res) {
+        const product = new cProduct();
+        const data = await product.getProductList();
+        res.send(data);
+    }
+
+    async updateProduct(req, res) {
+        try {
+            const id = req.body.id;
+            const name = req.body.name;
+            const price = req.body.price;
+            const image = req.body.image;
+            const description = req.body.description;
+            const product = new cProduct();
+            product.maSP = id;
+            product.tenSP = name;
+            product.giaTien = price;
+            product.hinhAnh = image;
+            product.moTa = description;
+            await product.updateProduct();
+            res.status(200).json({
+                message: "Sucess",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+                data: error,
+            });
+        }
+    }
+    async addProduct(req, res) {
+        try {
+            const name = req.body.name;
+            const price = req.body.price;
+            const image = req.body.image;
+            const description = req.body.description;
+            const product = new cProduct();
+            product.tenSP = name;
+            product.giaTien = price;
+            product.hinhAnh = image;
+            product.moTa = description;
+            await product.addProduct();
+            res.status(200).json({
+                message: "Sucess",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+                data: error,
+            });
+        }
+    }
+    async deleteProduct(req, res) {
+        try {
+            const id = req.body.id;
+            const product = new cProduct();
+            product.maSP = id;
+            await product.deleteProduct();
+            res.status(200).json({
+                message: "Sucess",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "Lỗi",
+            });
+        }
+    }
 
     async getDetailPage(req, res) {
         try {
-            const id = req.params.id;
-            let queryString = `SELECT * FROM SANPHAM WHERE SANPHAM.maSP = ${id}`;
-            const data = await executeQuery(queryString);
-            res.render("pages/detail", { data: data[0] });
+            const maSP = req.params.id;
+            const product = new cProduct(maSP);
+            const data = await product.getProductById();
+            res.render("pages/detail", { data: data });
         } catch (error) {
             res.status(500).json({
                 message: "Lỗi",
@@ -84,20 +92,15 @@ class Product {
         }
     }
 
-    async getProductList(req, res) {
+    async searchProduct(req, res) {
         try {
             let queryConfig = {
                 name: req.query.name || "",
                 price_min: req.query.price_min || 0,
                 price_max: req.query.price_max,
             };
-            let queryString = `SELECT * FROM SANPHAM WHERE tenSP like '%${queryConfig.name}%' and giaTien >= ${queryConfig.price_min}`;
-            if (queryConfig.price_max) {
-                console.log("truonghop");
-                queryString = `SELECT * FROM SANPHAM WHERE tenSP like '%${queryConfig.name}%' and giaTien >= ${queryConfig.price_min} and giaTien <= ${queryConfig.price_max}`;
-            }
-
-            const data = await executeQuery(queryString);
+            const product = new cProduct();
+            const data = await product.searchProduct(queryConfig.name, queryConfig.price_min, queryConfig.price_max);
             res.status(200).json({
                 message: "Lấy sản phẩm thành công",
                 data,
